@@ -21,7 +21,7 @@ jest.mock("axios", () => {
 
  //const wrapper = rtl.render(<App/>);
 
-test("Loads Next", async () => {
+test("Next Button Calls API", async () => {
   const wrapper = rtl.render(<App />);
   await wrapper.findAllByText(/next/i);
 
@@ -35,7 +35,7 @@ test("Loads Next", async () => {
   expect(axios.get).toHaveBeenCalled();
 })
 
-test("Loads Previous", async () => {
+test("Previous Button Calls API", async () => {
   const wrapper = rtl.render(<App />);
   await wrapper.findAllByText(/previous/i);
 
@@ -47,6 +47,21 @@ test("Loads Previous", async () => {
   
   //expect(axios.get).not.toHaveBeenCalled();
   expect(axios.get).toHaveBeenCalled();
+})
+
+test("Rendered Next Button", async () => {
+  const wrapper = rtl.render(<App/>);
+
+  const element = wrapper.getByText(/next/i);
+
+  expect(element).toBeVisible();
+})
+test("Rendered Previous Button", async () => {
+  const wrapper = rtl.render(<App/>);
+
+  const element = wrapper.getByText(/previous/i);
+
+  expect(element).toBeVisible();
 })
 
 test("Rendered Logo", async () => {
